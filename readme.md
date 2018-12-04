@@ -1,4 +1,5 @@
 # optimize pimpmydrawing SALES with AI
 
-## data.json
-* Extracted from Laravel ```App\File::all()->sortBy('downloads')->pluck('downloads','name')->toJSON()```
+## data
+* Drawings extracted from Laravel with ```App\File::all()->sortBy('downloads')->pluck('downloads','name')->toJSON()```
+* Search terms extracted from google search console
