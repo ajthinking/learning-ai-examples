@@ -9,25 +9,24 @@ device = torch.device("cpu")
 
 # N is batch size; D_in is input dimension;
 # H is hidden dimension; D_out is output dimension.
-N, D_in, H, D_out = 64, 1000, 100, 10
-
-# Create random input and output data
-x = torch.randn(N, D_in, device=device, dtype=dtype)
+N     = 8  # batch size
+D_in  = 8  # input dimension
+H     = 20 # hidden dimension
+D_out = 8  # output dimension
 
 # adding the family age and sex as input parameters
-x_test = torch.tensor([
+x = torch.tensor([
     # molle, ebba, carin, anders, madde, erik, pappa, mamma
     [ 4,     6,    28,    33,     33,    35,   62,    63],
     [ 0,     1,    1 ,    0  ,    1,     0,    0,     1]
 ],device=device, dtype=dtype)
 
 # adding the salary guesses as output parameters
-y_test = torch.tensor([
+y = torch.tensor([
     # molle, ebba, carin, anders, madde, erik,  pappa, mamma
     [ 0,     0,    28000, 41000,  30000, 59000, 74000, 19000]
 ], device=device, dtype=dtype)
 
-y = torch.randn(N, D_out, device=device, dtype=dtype)
 
 # Randomly initialize weights
 w1 = torch.randn(D_in, H, device=device, dtype=dtype) # notice the H, seems we are working across all hidden layers
