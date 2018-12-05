@@ -9,20 +9,20 @@ device = torch.device("cpu")
 # N is batch size; D_in is input dimension;
 # H is hidden dimension; D_out is output dimension.
 N     = 8  # batch size
-D_in  = 2  # input dimension
+D_in  = 3  # input dimension
 H     = 20 # hidden dimension
 D_out = 1  # output dimension
 
 # adding the family age and sex as input parameters
 x = torch.tensor([
-    [4. /63,  0.], # molle
-    [6. /63,  1.], # ebba
-    [28./63, 1.],  # carin
-    [33./63, 0.],  # anders
-    [33./63, 1.],  # madde
-    [35./63, 0.],  # erik
-    [62./63, 0.],  # pappa
-    [63./63, 1.]   # mamma
+    [4. /63,  0., 0], # molle
+    [6. /63,  1., 0], # ebba
+    [28./63, 1., 0],  # carin
+    [33./63, 0., 1],  # anders
+    [33./63, 1., 0],  # madde
+    [35./63, 0., 1],  # erik
+    [62./63, 0., 1],  # pappa
+    [63./63, 1., 0]   # mamma
 ],device=device, dtype=dtype)
 
 # adding the salary guesses as output parameters
@@ -71,8 +71,8 @@ for t in range(100000):
 
 print("Suddenly the unknown siblings Jerry and Jenny joins the family. What are their salaries?")
 h = torch.tensor([
-    [100. /63,  0.], # Jerry
-    [10. /63,  1.]  # Jenny
+    [64. /63,  0., 1], # Jerry
+    [64. /63,  1., 0]  # Jenny
 ],device=device, dtype=dtype).mm(w1) # <-- Matrix Multiplication x(input values * w1)
 h_relu = h.clamp(min=0) # Set minimum value to 0
 y_pred = h_relu.mm(w2) #
