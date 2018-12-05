@@ -1,3 +1,6 @@
+# predict salary when you find out of a new family member
+* src/salary.py
+
 # optimize pimpmydrawing SALES with AI
 
 ## data
