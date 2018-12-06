@@ -6,9 +6,6 @@ dtype = torch.float
 device = torch.device("cpu")
 # device = torch.device("cuda:0") # Uncomment this to run on GPU
 
-# N is batch size; D_in is input dimension;
-# H is hidden dimension; D_out is output dimension.
-N     = 8  # batch size
 D_in  = 3  # input dimension
 H     = 20 # hidden dimension
 D_out = 1  # output dimension
