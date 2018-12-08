@@ -19,20 +19,20 @@ x = torch.tensor([
     [33./63, 1., 0],  # madde
     [35./63, 0., 1],  # erik
     [62./63, 0., 1],  # pappa
-    [63./63, 1., 0]   # mamma
+    [63./63, 1., 0],   # mamma         
 ],device=device, dtype=dtype)
 
 # adding the salary guesses as output parameters
 y = torch.tensor([
-    [0.    /75000], # molle
-    [0.    /75000], # ebba
-    [26000./75000], # carin
-    [41000./75000], # anders
-    [29000./75000], # madde
-    [62000./75000], # erik
-    [75000./75000], # pappa
-    [19000./75000]  # mamma
-], device=device, dtype=dtype)
+    [0.    ], # molle
+    [0.    ], # ebba
+    [26000.], # carin
+    [41000.], # anders
+    [29000.], # madde
+    [62000.], # erik
+    [75000.], # pappa
+    [19000.],  # mamma
+], device=device, dtype=dtype)/75000
 
 
 # Randomly initialize weights
@@ -42,7 +42,7 @@ w2 = torch.randn(H, D_out, device=device, dtype=dtype)
 latest = 0
 
 learning_rate = 1e-6
-for t in range(100000):
+for epoch in range(100000):
     # Forward pass: compute predicted y
     h = x.mm(w1) # <-- Matrix Multiplication x(input values * w1)
     h_relu = h.clamp(min=0) # Set minimum value to 0
@@ -52,7 +52,7 @@ for t in range(100000):
 
     # Compute and print loss
     loss = (y_pred - y).pow(2).sum().item() # total loss across all 
-    print(t, loss)
+    print(epoch, loss)
 
     # Backprop to compute gradients of w1 and w2 with respect to loss
     grad_y_pred = 2.0 * (y_pred - y) # get the slope from the y difference (positive or negative times two)
