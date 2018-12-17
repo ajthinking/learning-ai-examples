@@ -3,13 +3,14 @@ import torch.nn as nn
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.fc1 = nn.Linear(in_features=12 * 4 * 4, out_features=120)
-        self.fc2 = nn.Linear(in_features=120, out_features=60)
-        self.out = nn.Linear(in_features=60, out_features=10)
+        self.l1 = nn.Linear(242, 242)
+        self.l2 = nn.Linear(242, 242)
+        self.l3 = nn.Linear(242, 1)
+        self.sigmoid = nn.Sigmoid()
         
-    def forward(self, t):
+    def forward(self, x):
         # implement the forward pass
-        return t
-
-n = Network()
-print(n)
+        out1 = self.sigmoid(self.l1(x))
+        out2 = self.sigmoid(self.l2(out1))
+        y_pred = self.sigmoid(self.l3(out2))
+        return y_pred

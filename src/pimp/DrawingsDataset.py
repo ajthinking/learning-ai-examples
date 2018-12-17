@@ -10,25 +10,43 @@ import codecs
 import pandas as pd
 import json
 
+from torch.autograd import Variable
+
 class DrawingsDataset(data.Dataset):
     def __init__(self, root, train=True, transform=None, target_transform=None, download=False):
 
         with open('data/drawings.json') as file:
             drawings = json.load(file)
-            word_bins = self.get_word_bins(drawings)
+            
+        tensor_input_data = []
+        tensor_output_data = []
 
-            drawings = list(map(lambda drawing: -1, drawings))
+        for drawing in drawings:
+            tensor_input_data.append(
+                [drawing['updated_at']]
+                +
+                list(map(lambda word: float(word in self.get_local_word_bins(drawing)), self.get_global_word_bins(drawings)))
+            )
 
-            print(drawings)
-            #x = torch.tensor([[1, 2, 3], [4, 5, 6]])
+            tensor_output_data.append([drawing['downloads']])
+
+        self.x = Variable(torch.tensor(tensor_input_data))
+        self.y = Variable(torch.tensor(tensor_output_data))
+        print(
+            len(
+                self.get_global_word_bins(drawings)
+            )
+        )
 
         
+    def get_local_word_bins(self, drawing):
+        return drawing['name'].split()    
 
-    def get_word_bins(self, drawings):
+    def get_global_word_bins(self, drawings):
         word_bins = []
 
         for drawing in drawings:
-            for word in drawing['name'].split():
+            for word in self.get_local_word_bins(drawing):
                 if not (
                     word == '-' or
                     word.isdigit() or
@@ -38,5 +56,8 @@ class DrawingsDataset(data.Dataset):
         
         return word_bins
 
-    def __getitem__(self, something):
-        return
+    def __getitem__(self, i):
+        return self.x[i]
+
+    def __len__(self):
+        return len(self.x)
