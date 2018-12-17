@@ -32,11 +32,11 @@ class DrawingsDataset(data.Dataset):
 
         self.x = Variable(torch.tensor(tensor_input_data))
         self.y = Variable(torch.tensor(tensor_output_data))
-        print(
-            len(
-                self.get_global_word_bins(drawings)
-            )
-        )
+        # print(
+        #     len(
+        #         self.get_global_word_bins(drawings)
+        #     )
+        # )
 
         
     def get_local_word_bins(self, drawing):
