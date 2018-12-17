@@ -8,12 +8,15 @@ import numpy as np
 import torch
 import codecs
 import pandas as pd
+import json
 
 class DrawingsDataset(data.Dataset):
     def __init__(self, root, train=True, transform=None, target_transform=None, download=False):
 
-        data = pd.read_json('data/drawings-sample.json')
-        print(data.values(['filename', 'downloads']))
+        with open('data/drawings.json') as file:
+            data = json.load(file)
+
+        print(data[0]['name'])
         return
 
         self.root = os.path.expanduser(root)

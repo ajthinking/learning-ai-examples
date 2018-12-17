@@ -1,3 +1,4 @@
 from DrawingsDataset import DrawingsDataset
+import json
 
-d = DrawingsDataset('/home/anders/Code/')
+DrawingsDataset('/home/anders/Code/')
