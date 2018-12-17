@@ -16,10 +16,13 @@ class DrawingsDataset(data.Dataset):
         with open('data/drawings.json') as file:
             drawings = json.load(file)
             word_bins = self.get_word_bins(drawings)
-            for drawing in drawings:
-                pass
 
-        print(word_bins)
+            drawings = list(map(lambda drawing: -1, drawings))
+
+            print(drawings)
+            #x = torch.tensor([[1, 2, 3], [4, 5, 6]])
+
+        
 
     def get_word_bins(self, drawings):
         word_bins = []
