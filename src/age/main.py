@@ -7,7 +7,7 @@ device = torch.device("cpu")
 # device = torch.device("cuda:0") # Uncomment this to run on GPU
 
 D_in  = 1  # input dimension
-H     = 20 # hidden dimension
+H     = 50 # hidden dimension
 D_out = 1  # output dimension
 
 # adding the family age and sex as input parameters
@@ -35,7 +35,7 @@ w2 = torch.randn(H, D_out, device=device, dtype=dtype)
 
 latest_loss = 0
 
-learning_rate = 1e-6
+learning_rate = 1e-5
 for epoch in range(1000):
     # Forward pass: compute predicted y
     h = x.mm(w1) # <-- Matrix Multiplication x(input values * w1)
@@ -69,8 +69,10 @@ for epoch in range(1000):
 
 print("Suddenly the unknown sibling Jerry joins the family. What are his number of survived days?")
 h = torch.tensor([
-    [10/35], # Jerry
+    [100/35], # Jerry
 ],device=device, dtype=dtype).mm(w1) # <-- Matrix Multiplication x(input values * w1)
 h_relu = h.clamp(min=0) # Set minimum value to 0
 y_pred = h_relu.mm(w2) #
-print(y_pred)
+print(
+    y_pred.flatten().item()
+)
