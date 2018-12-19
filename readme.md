@@ -1,9 +1,12 @@
-# predict salary when you find out of a new family member
+# Artificial inteligence with pytorch examples
+This is my collection of examples. The examples are located in independent folders under ```/src```, and they can be excecuted like this ```python /src/*/main.py```
+
+## predict salary when you find out of a new family member
 * src/salary.py
 
-# optimize pimpmydrawing SALES with AI
+## optimize pimpmydrawing SALES with AI
 
-## data
+### data
 Drawings extracted from Laravel with the following query
 
 ```
@@ -18,7 +21,7 @@ collect(
 ```
 Also delete id=1 (it got 500K downloads spike.)
 
-### questions
+#### questions
 * Why does SGD work? The data is not convex, but the algorithm adds stocastic global minimum search?
 * How to properly normalize/unnormalize data?
 * How to setup databases as input source?
