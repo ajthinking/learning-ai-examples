@@ -7,10 +7,26 @@
 Drawings extracted from Laravel with the following query
 
 ```
-collect(App\File::all()->unique('name')->map(function($file) { $file = $file->only(['name', 'updated_at', 'downloads']); $file["updated_at"] = $file["updated_at"]->timestamp; return $file; })->unique('name')->values()->all())->shuffle()->toJSON()
+collect(
+    App\File::all()->unique('name')->map(
+        function($file) {
+            $file = $file->only(['name', 'updated_at', 'downloads']);
+            $file["updated_at"] = $file["updated_at"]->timestamp;
+            return $file;
+        })->unique('name')->values()->all()
+)->shuffle()->toJSON()
 ```
-Also delete id=1 (it got 500K downloads.)
+Also delete id=1 (it got 500K downloads spike.)
 
+### questions
+* Why does SGD work? The data is not convex, but the algorithm adds stocastic global minimum search?
+* How to properly normalize/unnormalize data?
+* How to setup databases as input source?
+* How swap this example to working on the GPU?
+* General improvements
+
+
+#
 
 * Search terms extracted from google search console
 
