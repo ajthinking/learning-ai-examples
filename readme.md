@@ -3,9 +3,14 @@ This is my collection of examples. The examples are located in independent folde
 
 ## predict age in days from how many years old
 Suddenly the unknown sibling Jerry (age x) joins your family. What are his number of survived days (y)?
+
 ```python /src/age/main.py```
 
 ## optimize pimpmydrawing SALES with AI
+Estimate number of downloads based on publication date and keywords.
+
+```python /src/pimp/main.py```
+
 
 ### data
 Drawings extracted from Laravel with the following query
