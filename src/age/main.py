@@ -67,7 +67,7 @@ for epoch in range(1000):
     w1 -= learning_rate * grad_w1
     w2 -= learning_rate * grad_w2
 
-print("Suddenly the unknown sibling Jerry joins the family. What are his number of survived days?")
+print("Suddenly the unknown sibling Jerry (age x) joins your family. What are his number of survived days (y)?")
 h = torch.tensor([
     [45/35], # Jerry
 ],device=device, dtype=dtype).mm(w1) # <-- Matrix Multiplication x(input values * w1)

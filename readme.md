@@ -2,6 +2,7 @@
 This is my collection of examples. The examples are located in independent folders under ```/src```, and they can be excecuted like this ```python /src/*/main.py```
 
 ## predict age in days from how many years old
+Suddenly the unknown sibling Jerry (age x) joins your family. What are his number of survived days (y)?
 * src/age.py
 
 ## optimize pimpmydrawing SALES with AI
