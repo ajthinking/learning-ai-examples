@@ -1,8 +1,8 @@
 # Artificial inteligence with pytorch examples
 This is my collection of examples. The examples are located in independent folders under ```/src```, and they can be excecuted like this ```python /src/*/main.py```
 
-## predict salary when you find out of a new family member
-* src/salary.py
+## predict age in days from how many years old
+* src/age.py
 
 ## optimize pimpmydrawing SALES with AI
 

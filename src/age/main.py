@@ -10,7 +10,7 @@ D_in  = 1  # input dimension
 H     = 50 # hidden dimension
 D_out = 1  # output dimension
 
-# adding the family age and sex as input parameters
+# adding the family age input parameters (normalize with max age=35)
 x = torch.tensor([
     [4/35],
     [6/35],
@@ -19,7 +19,7 @@ x = torch.tensor([
     [35/35],        
 ],device=device, dtype=dtype)
 
-# adding the salary guesses as output parameters
+# adding the age in days as output parameters
 y = torch.tensor([
     [4*365],
     [6*365],
@@ -69,7 +69,7 @@ for epoch in range(1000):
 
 print("Suddenly the unknown sibling Jerry joins the family. What are his number of survived days?")
 h = torch.tensor([
-    [100/35], # Jerry
+    [45/35], # Jerry
 ],device=device, dtype=dtype).mm(w1) # <-- Matrix Multiplication x(input values * w1)
 h_relu = h.clamp(min=0) # Set minimum value to 0
 y_pred = h_relu.mm(w2) #
