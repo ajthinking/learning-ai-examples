@@ -6,7 +6,7 @@ Suddenly the unknown sibling Jerry (age x) joins your family. What are his numbe
 
 ```python /src/age/main.py```
 
-## :white_check_mark: optimize pimpmydrawing SALES with AI
+## :white_check_mark: predict pimpmydrawing downloads
 Estimate number of downloads based on publication date and keywords.
 
 ```python /src/pimp/main.py```
