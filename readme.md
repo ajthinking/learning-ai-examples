@@ -1,12 +1,12 @@
-# Artificial inteligence with pytorch examples
+# :stars: Artificial inteligence with pytorch examples
 This is my collection of examples. The examples are located in independent folders under ```/src```, and they can be excecuted like this ```python /src/*/main.py```
 
-## predict age in days from how many years old
+## :white_check_mark: predict age in days from how many years old
 Suddenly the unknown sibling Jerry (age x) joins your family. What are his number of survived days (y)?
 
 ```python /src/age/main.py```
 
-## optimize pimpmydrawing SALES with AI
+## :white_check_mark: optimize pimpmydrawing SALES with AI
 Estimate number of downloads based on publication date and keywords.
 
 ```python /src/pimp/main.py```
