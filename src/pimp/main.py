@@ -3,6 +3,8 @@ from DrawingsDataset import DrawingsDataset
 from torch.utils.data import Dataset, DataLoader
 import torch.nn as nn
 import torch.optim as optim
+import sys
+from torch.autograd import Variable
 
 drawings = DrawingsDataset('/home/anders/Code/')
 train_loader = DataLoader(dataset=drawings,
@@ -20,19 +22,28 @@ network = Network()
 criterion = nn.MSELoss()
 optimizer = optim.SGD(network.parameters(), lr=0.1)
 
-# Training loop
-for epoch in range(0):
+
+# Updated training loop
+for epoch in range(1000):
+    for i, data in enumerate(train_loader, 0):
+        #print(data.size())
+        #sys.exit()
+        # get the inputs
+        inputs, labels = data
+
+        # wrap them in Variable
+        inputs, labels = Variable(inputs), Variable(labels)
+
         # Forward pass: Compute predicted y by passing x to the model
-    y_pred = network(x_data)
+        y_pred = network(inputs)
+        # Compute and print loss
+        loss = criterion(y_pred, labels)
+        print(epoch, i, loss.data[0])
 
-    # Compute and print loss
-    loss = criterion(y_pred, y_data)
-    print(epoch, loss.data[0])
-
-    # Zero gradients, perform a backward pass, and update the weights.
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
+        # Zero gradients, perform a backward pass, and update the weights.
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
 
 
 print("finished!")

@@ -3,9 +3,11 @@ import torch.nn as nn
 class Network(nn.Module):
     def __init__(self):
         super(Network, self).__init__()
-        self.l1 = nn.Linear(242, 242)
-        self.l2 = nn.Linear(242, 242)
-        self.l3 = nn.Linear(242, 1)
+        # input data has 99 rows.
+        # Each row has 242 input neurons, 1 output neurons.
+        self.l1 = nn.Linear(243, 243)
+        self.l2 = nn.Linear(243, 243)
+        self.l3 = nn.Linear(243, 1)
         self.sigmoid = nn.Sigmoid()
         
     def forward(self, x):

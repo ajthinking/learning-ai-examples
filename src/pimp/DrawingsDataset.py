@@ -9,8 +9,8 @@ import torch
 import codecs
 import pandas as pd
 import json
-
 from torch.autograd import Variable
+import sys
 
 class DrawingsDataset(data.Dataset):
     def __init__(self, root, train=True, transform=None, target_transform=None, download=False):
@@ -30,14 +30,8 @@ class DrawingsDataset(data.Dataset):
 
             tensor_output_data.append([drawing['downloads']])
 
-        self.x = Variable(torch.tensor(tensor_input_data))
-        self.y = Variable(torch.tensor(tensor_output_data))
-        # print(
-        #     len(
-        #         self.get_global_word_bins(drawings)
-        #     )
-        # )
-
+        self.x = Variable(torch.tensor(tensor_input_data, dtype=torch.float))
+        self.y = Variable(torch.tensor(tensor_output_data, dtype=torch.float))
         
     def get_local_word_bins(self, drawing):
         return drawing['name'].split()    
@@ -56,8 +50,8 @@ class DrawingsDataset(data.Dataset):
         
         return word_bins
 
-    def __getitem__(self, i):
-        return self.x[i]
+    def __getitem__(self, index):
+        return self.x[index], self.y[index]
 
     def __len__(self):
         return len(self.x)
