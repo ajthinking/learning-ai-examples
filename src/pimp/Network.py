@@ -1,4 +1,5 @@
 import torch.nn as nn
+import sys
 
 class Network(nn.Module):
     def __init__(self):
@@ -12,7 +13,10 @@ class Network(nn.Module):
         
     def forward(self, x):
         # implement the forward pass
-        out1 = self.sigmoid(self.l1(x))
-        out2 = self.sigmoid(self.l2(out1))
-        y_pred = self.sigmoid(self.l3(out2))
+        out1 = self.l1(x)
+        
+        out2 = self.l2(out1)
+        y_pred = self.l3(out2)
+        #print(y_pred)
+        #sys.exit()        
         return y_pred
